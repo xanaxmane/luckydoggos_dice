@@ -1,0 +1,35 @@
+{
+  "name": "Bitcoinary",
+  "description": "Bitcoin Gambling Site - Using OnChain.io programmable Bitcoin cold storage.",
+  "logo": "https://camo.githubusercontent.com/2d1608a32c72618dd61b82d62f19d566cf982e1a/687474703a2f2f692e696d6775722e636f6d2f386855314b32652e706e67",
+  "repository": "https://github.com/onchain/bitcoinary",
+  "keywords": [
+    "Bitcoin",
+    "Gambling",
+    "Rails"
+  ],
+  "scripts": {"postdeploy": "bundle exec rake db:migrate; bundle exec rake db:seed"},
+  "env": {
+    "SENDGRID_USERNAME": {
+      "description": "Your SendGrid address for sending mail.",
+      "value": "user@example.com",
+      "required": false
+    },
+    "SENDGRID_PASSWORD": {
+      "description": "Your SendGrid password for sending mail.",
+      "value": "changeme",
+      "required": false
+    },
+    "DOMAIN_NAME": {
+      "description": "Required for sending mail. Give an app name or use a custom domain.",
+      "value": "myapp.herokuapp.com",
+      "required": true
+    },
+    "master_public_keys": {
+      "description": "Master public keys taked from the OnChain fund you want to use.",
+      "value": "MPK1,MPK2,MPK3",
+      "required": true
+    },
+    "RAILS_ENV": "production"
+  }
+}
