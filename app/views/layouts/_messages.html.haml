@@ -1,0 +1,11 @@
+-# Rails flash messages styled for Bootstrap 3.0
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    %input.snackbar{ type: 'hidden', value: msg } 
+
+:javascript
+  $( document ).ready(function() {
+    $('.snackbar').each(function(i, obj) {
+        $.snackbar({content: $(this).val(), timeout: 3000});
+    });
+  });

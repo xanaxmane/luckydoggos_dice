@@ -1,0 +1,31 @@
+- @bets.each do |bet|
+  - begin
+    %tr
+      %td.text-primary
+        = link_to bet.id.to_s, bet_url(bet), { onclick: 'showVerification("' + bet.id.to_s + '"); return false' }
+      %td
+        = bet.user.name
+      %td
+        = time_ago_in_words(bet.created_at)
+        ago.
+      %td
+        = bet.amount_formatted
+      %td
+        = bet.multiplier.round(2)
+      %td
+        - if bet.rolltype == 'under'
+          <
+        - else
+          >
+        = bet.game
+      %td
+        = bet.roll
+      %td
+        - if bet.win? or bet.amount == 0
+          %span.label.label-success
+            = bet.profit_formatted
+        - else
+          %span.label.label-default
+            = bet.profit_formatted
+  - rescue => e
+    - puts e
